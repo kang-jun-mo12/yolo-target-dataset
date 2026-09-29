@@ -1,0 +1,19 @@
+{
+  "train_images": 409,
+  "train_enemy": 409,
+  "train_ally": 407,
+  "empty_images": 0,
+  "val_images": 168,
+  "val_enemy": 163,
+  "val_ally": 168,
+  "images": 577,
+  "boxes": 1147,
+  "png_bytes": 1402983038,
+  "excluded_photo_numbers": [
+    42,
+    49
+  ],
+  "source_dataset_id": "camera-final-20260928-v1",
+  "source_version": 102,
+  "frozen_at": "2026-09-29T06:30:06.938947+00:00"
+}

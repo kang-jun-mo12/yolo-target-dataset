@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "images_checked": 577,
+  "labels_checked": 577,
+  "original_png_sha256_match": true,
+  "png_decode_valid": true,
+  "label_bounds_valid": true,
+  "cross_split_exact_duplicates": 0,
+  "excluded_photos_absent": true
+}

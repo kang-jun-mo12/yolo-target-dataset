@@ -1,0 +1,14 @@
+[
+  {
+    "photo_number": 42,
+    "original_index": 41,
+    "source": "camera_20260928_172603.png",
+    "reason": "User requested exclusion from final training dataset"
+  },
+  {
+    "photo_number": 49,
+    "original_index": 48,
+    "source": "camera_20260928_172711.png",
+    "reason": "User requested exclusion from final training dataset"
+  }
+]
