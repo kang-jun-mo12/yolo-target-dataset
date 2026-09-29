@@ -34,7 +34,24 @@ pip install ultralytics
 python train.py --model yolo11n.pt --epochs 100 --imgsz 1280 --batch 8
 ```
 
-학습 예시이며 모델 학습은 아직 수행하지 않았습니다. GPU 메모리에 맞춰 batch와 이미지 크기를 조절하세요.
+GPU 메모리에 맞춰 batch와 이미지 크기를 조절하세요.
+
+## 학습된 모델
+
+YOLO26m 사전 학습 가중치를 이 데이터셋에 미세 조정한 모델을 `models/yolo26m_1920_90_5_5`에 제공합니다.
+
+- 입력 크기: 1920, `rect=True`
+- 분할: train 519장 / val 29장 / test 29장
+- 학습: 100 epochs, batch 1, NVIDIA RTX 5070 Ti
+- 독립 보관한 test 29장 결과: Precision 0.998, Recall 1.000, mAP50 0.995, mAP50-95 0.935
+- 모델 선택에 사용한 val 최고 mAP50-95: 0.911 (epoch 76)
+
+```sh
+python prepare_split_90_5_5.py
+yolo detect val model=models/yolo26m_1920_90_5_5/best.pt data=dataset_90_5_5/data.yaml split=test imgsz=1920 batch=1
+```
+
+테스트 이미지는 학습과 검증에서 제외했지만 기존 촬영 환경 안에서 선택했습니다. 새로운 장소, 조명, 카메라에 대한 성능을 보장하는 독립 외부 테스트는 아닙니다.
 
 ## 파일 구성
 
@@ -45,5 +62,7 @@ python train.py --model yolo11n.pt --epochs 100 --imgsz 1280 --batch 8
 - `annotations.json`: 최종 픽셀 좌표와 서버 저장 시각.
 - `excluded.json`: 제외한 사진과 사유.
 - `summary.json`, `validation.json`: 수량과 제작 시 검증 결과.
+- `models/yolo26m_1920_90_5_5`: 학습된 YOLO26m 가중치, 모델 설명, 학습 당시 분할표.
+- `prepare_split_90_5_5.py`: 원본을 변경하지 않고 모델 학습에 사용한 90:5:5 분할을 재생성합니다.
 
 이미지의 라벨 대상은 두 색상 타겟입니다. 사람은 라벨 대상이 아닙니다. 타겟은 판·기둥·받침대를 포함하고, 가려진 경우 확인되는 부분을 감쌉니다.

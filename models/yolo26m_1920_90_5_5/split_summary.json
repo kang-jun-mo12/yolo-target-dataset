@@ -1,0 +1,22 @@
+{
+  "images": {
+    "train": 519,
+    "val": 29,
+    "test": 29
+  },
+  "boxes": {
+    "train": {
+      "0": 516,
+      "1": 517
+    },
+    "val": {
+      "0": 29,
+      "1": 29
+    },
+    "test": {
+      "0": 27,
+      "1": 29
+    }
+  },
+  "method": "contiguous held-out blocks within each capture group"
+}
