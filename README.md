@@ -38,6 +38,23 @@ GPU 메모리에 맞춰 batch와 이미지 크기를 조절하세요.
 
 ## 학습된 모델
 
+### 최신 모델: YOLO26l OBB (1920×1088)
+
+회전 박스를 예측하는 최신 모델은 **[models/yolo26l_obb_1920x1088](models/yolo26l_obb_1920x1088)**에 제공합니다.
+
+- 가중치: [`best.pt`](models/yolo26l_obb_1920x1088/best.pt), Git LFS 관리.
+- 학습 입력: 가로 1920 × 세로 1088, `imgsz=1920`, `rect=True`.
+- OBB 데이터 총 2,856장: train 2,560 / validation 296. 실제 사진 1,856장과 증강 1,000장으로 구성했습니다.
+- 63 epochs에서 조기 종료됐으며, epoch 33 모델이 최고 validation mAP50–95 **0.96424**를 기록했습니다.
+- 이 모델 폴더에 가중치, 사용법, 설정과 학습 결과를 포함합니다. 전체 OBB 데이터셋은 포함하지 않으며 저장소 루트의 기존 일반 박스 데이터와 구별됩니다.
+
+```sh
+git lfs pull --include="models/yolo26l_obb_1920x1088/best.pt"
+yolo obb predict model=models/yolo26l_obb_1920x1088/best.pt source=image.png imgsz=1920 rect=True
+```
+
+### 기존 모델: YOLO26m 일반 박스
+
 YOLO26m 사전 학습 가중치를 이 데이터셋에 미세 조정한 모델을 `models/yolo26m_1920_90_5_5`에 제공합니다.
 
 - 입력 크기: 1920, `rect=True`
@@ -63,6 +80,7 @@ yolo detect val model=models/yolo26m_1920_90_5_5/best.pt data=dataset_90_5_5/dat
 - `excluded.json`: 제외한 사진과 사유.
 - `summary.json`, `validation.json`: 수량과 제작 시 검증 결과.
 - `models/yolo26m_1920_90_5_5`: 학습된 YOLO26m 가중치, 모델 설명, 학습 당시 분할표.
+- `models/yolo26l_obb_1920x1088`: 최신 YOLO26l OBB 가중치, 사용법, 설정과 학습·검증 결과.
 - `prepare_split_90_5_5.py`: 원본을 변경하지 않고 모델 학습에 사용한 90:5:5 분할을 재생성합니다.
 
 이미지의 라벨 대상은 두 색상 타겟입니다. 사람은 라벨 대상이 아닙니다. 타겟은 판·기둥·받침대를 포함하고, 가려진 경우 확인되는 부분을 감쌉니다.

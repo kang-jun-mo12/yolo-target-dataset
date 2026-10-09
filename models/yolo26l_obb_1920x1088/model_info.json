@@ -1,0 +1,93 @@
+{
+  "architecture": "YOLO26l-OBB",
+  "task": "obb",
+  "weights": "best.pt",
+  "weights_bytes": 56624149,
+  "weights_sha256": "740bdb55a134f425bffc086fc446c9b6c59a98df97349767bd81aec59ffaf6a0",
+  "classes": {
+    "0": "enemy",
+    "1": "ally"
+  },
+  "class_colors": {
+    "0": "pink",
+    "1": "blue"
+  },
+  "ultralytics": "8.4.165",
+  "torch": "2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "source_image_hw": [
+    1080,
+    1920
+  ],
+  "train_input_hw": [
+    1088,
+    1920
+  ],
+  "validation_input_hw": [
+    1120,
+    1952
+  ],
+  "imgsz": 1920,
+  "rect": true,
+  "planned_epochs": 100,
+  "completed_epochs": 63,
+  "best_epoch": 33,
+  "stop_reason": "early_stopping",
+  "patience": 30,
+  "batch": 1,
+  "seed": 42,
+  "training_hours_reported": 5.057,
+  "training_completed": true,
+  "selection_metrics": {
+    "metrics/precision(B)": 0.99978,
+    "metrics/recall(B)": 1.0,
+    "metrics/mAP50(B)": 0.995,
+    "metrics/mAP50-95(B)": 0.96424
+  },
+  "final_best_validation_log_rounded": {
+    "all": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "map50": 0.995,
+      "map50_95": 0.962
+    },
+    "enemy": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "map50": 0.995,
+      "map50_95": 0.959
+    },
+    "ally": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "map50": 0.995,
+      "map50_95": 0.965
+    }
+  },
+  "dataset": {
+    "total_images": 2856,
+    "train_images": 2560,
+    "validation_images": 296,
+    "total_boxes": 5661,
+    "train_boxes": 5074,
+    "validation_boxes": 587,
+    "sources": {
+      "existing_real_obb": {
+        "train": 409,
+        "val": 168
+      },
+      "new_real_obb": {
+        "train": 1151,
+        "val": 128
+      },
+      "synthetic_obb": {
+        "train": 1000,
+        "val": 0
+      }
+    },
+    "label_format": "class x1 y1 x2 y2 x3 y3 x4 y4 (normalized)",
+    "source_label_snapshot_utc": "2026-10-07T09:56:49.789413+00:00",
+    "independent_test_set": false,
+    "included_in_this_model_upload": false
+  }
+}

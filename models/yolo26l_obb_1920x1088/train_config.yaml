@@ -1,0 +1,35 @@
+task: obb
+epochs: 100
+patience: 30
+imgsz: 1920
+# 1920x1080 source images become 1920x1088 training batches with minimal padding.
+rect: true
+multi_scale: 0.0
+batch: 1
+device: 0
+workers: 4
+amp: true
+cache: false
+optimizer: auto
+seed: 42
+deterministic: true
+save: true
+plots: true
+exist_ok: false
+# Keep color identity and avoid aggressive crops of the small full-object boxes.
+hsv_h: 0.005
+hsv_s: 0.25
+hsv_v: 0.30
+degrees: 3.0
+translate: 0.03
+scale: 0.10
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+bgr: 0.0
+mosaic: 0.0
+mixup: 0.0
+cutmix: 0.0
+copy_paste: 0.0
+close_mosaic: 0
